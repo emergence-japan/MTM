@@ -59,30 +59,81 @@
     </div>
   </section>
 
-  <!-- Step 1 & 2: Listing and Ranking (Placeholder) -->
+  <!-- Step 1 & 2: Listing and Ranking -->
   <section id="step1" class="screen">
-    <div class="content-wrapper">
+    <div class="content-wrapper survey-wrapper">
         <h2 data-i18n="step1Title">ステップ1 & 2</h2>
-        <!-- Content will be implemented in next task -->
-        <button class="btn-primary" onclick="navigateTo('step3')">Next</button>
+        <p class="section-instruction" data-i18n="step1Instruction">あなたにとって大切なもの、人、出来事を5～6個ほど挙げてください。</p>
+        
+        <div id="item-list-container" class="item-list-container">
+            <div class="item-input-group">
+                <input type="text" class="text-input item-input" data-i18n-placeholder="itemPlaceholder" placeholder="大切なものを入力してください">
+            </div>
+            <div class="item-input-group">
+                <input type="text" class="text-input item-input" data-i18n-placeholder="itemPlaceholder" placeholder="大切なものを入力してください">
+            </div>
+            <div class="item-input-group">
+                <input type="text" class="text-input item-input" data-i18n-placeholder="itemPlaceholder" placeholder="大切なものを入力してください">
+            </div>
+            <div class="item-input-group">
+                <input type="text" class="text-input item-input" data-i18n-placeholder="itemPlaceholder" placeholder="大切なものを入力してください">
+            </div>
+            <div class="item-input-group">
+                <input type="text" class="text-input item-input" data-i18n-placeholder="itemPlaceholder" placeholder="大切なものを入力してください">
+            </div>
+            <div class="item-input-group">
+                <input type="text" class="text-input item-input" data-i18n-placeholder="itemPlaceholder" placeholder="大切なものを入力してください">
+            </div>
+        </div>
+
+        <div class="validation-panel" style="margin-top: 1rem;">
+            <p id="item-count-status" class="validation-status invalid" data-i18n="validationMinItems">最低5つ入力してください</p>
+        </div>
+
+        <div id="ranking-container" style="display: none; margin-top: 2rem;">
+            <h3 data-i18n="step2Title">重要度順に並び替える</h3>
+            <p class="input-hint" data-i18n="step2Instruction">1 = 最も重要</p>
+            <div id="ranked-items-list" class="ranked-items-list">
+                <!-- Ranked items will be injected here -->
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button id="btn-to-ranking" class="btn-primary" onclick="showRanking()" disabled data-i18n="btnOrganize">次へ (整理)</button>
+            <button id="btn-to-step3" class="btn-primary" onclick="navigateTo('step3')" style="display: none;" data-i18n="btnNext">次へ (深く考える)</button>
+        </div>
     </div>
   </section>
 
-  <!-- Step 3: Deep Thinking (Placeholder) -->
+  <!-- Step 3: Deep Thinking -->
   <section id="step3" class="screen">
-    <div class="content-wrapper">
-        <h2 data-i18n="step3Title">ステップ3</h2>
-        <!-- Content will be implemented in next task -->
-        <button class="btn-primary" onclick="navigateTo('step4')">Next</button>
+    <div class="content-wrapper survey-wrapper">
+        <h2 data-i18n="step3Title">ステップ3 - 深く考える</h2>
+        <p class="section-instruction" data-i18n="step3Instruction">リストの上位項目について、さらに深く考えてみましょう。</p>
+        
+        <div id="deep-thinking-container">
+            <!-- Reflection boxes will be injected here -->
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-primary" onclick="navigateTo('step4')" data-i18n="btnNext">次へ (まとめ)</button>
+        </div>
     </div>
   </section>
 
-  <!-- Step 4: Summary (Placeholder) -->
+  <!-- Step 4: Summary -->
   <section id="step4" class="screen">
-    <div class="content-wrapper">
-        <h2 data-i18n="step4Title">ステップ4</h2>
-        <!-- Content will be implemented in next task -->
-        <button class="btn-primary" onclick="completeGameAndSend()">Finish</button>
+    <div class="content-wrapper survey-wrapper">
+        <h2 data-i18n="step4Title">ステップ4 - まとめ</h2>
+        <p class="section-instruction" data-i18n="step4SummaryPrompt">この活動を通して、あなた自身について気づいたこと、再発見したことは何ですか？</p>
+        
+        <div class="question-group">
+            <textarea id="final-summary" class="text-input" rows="6" style="width: 100%; max-width: 100%;" data-i18n-placeholder="summaryPlaceholder" placeholder="振り返りを記入してください..."></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-primary" onclick="completeGameAndSend()" data-i18n="btnFinish">体験を完了する</button>
+        </div>
     </div>
   </section>
 
@@ -126,8 +177,21 @@
         remark4: "目的は自己理解と自覚であり、パフォーマンスではありません。",
         btnUnderstand: "理解して体験を開始する",
         step1Title: "ステップ1 & 2 - 整理",
+        step1Instruction: "あなたにとって大切なもの、人、出来事を5～6個ほど挙げてください。",
+        itemPlaceholder: "大切なものを入力してください",
+        validationMinItems: "最低5つ入力してください",
+        btnOrganize: "次へ (整理)",
+        step2Title: "重要度順に並び替える",
+        step2Instruction: "最も重要なものから順に番号を振ってください (1 = 最も重要)",
+        btnNext: "次へ",
         step3Title: "ステップ3 - 深く考える",
+        step3Instruction: "リストの上位項目について、さらに深く考えてみましょう。",
+        whyImportant: "なぜそれがあなたにとって大切なのですか？",
+        howInfluence: "これらのことは、あなたの気持ちや日常生活にどのような影響を与えていますか？",
         step4Title: "ステップ4 - まとめ",
+        step4SummaryPrompt: "この活動を通して、あなた自身について気づいたこと、再発見したことは何ですか？",
+        summaryPlaceholder: "振り返りを記入してください...",
+        btnFinish: "体験を完了する",
         completionMsg1: "この体験が、あなたの健康と幸福の支えとなり、より充実した人生を送る一助となることを願っています。",
         completionMsg2: "本当にありがとうございました。",
         btnBackToTop: "トップに戻る",
@@ -147,8 +211,21 @@
         remark4: "The goal is self-understanding and awareness, not performance.",
         btnUnderstand: "I understand, start activity",
         step1Title: "Step 1 & 2 - Organizing",
+        step1Instruction: "List about 5–6 things, people, or events that are important to you.",
+        itemPlaceholder: "Enter something important",
+        validationMinItems: "Please enter at least 5 items",
+        btnOrganize: "Next (Organize)",
+        step2Title: "Organize by Importance",
+        step2Instruction: "Arrange these items from most important to least important (1 = most important).",
+        btnNext: "Next",
         step3Title: "Step 3 - Deep Thinking",
+        step3Instruction: "Reflect more deeply on the top items from your list.",
+        whyImportant: "Why is this important to you?",
+        howInfluence: "How does this influence your feelings or daily life?",
         step4Title: "Step 4 - Summary",
+        step4SummaryPrompt: "What did you notice or rediscover about yourself during this activity?",
+        summaryPlaceholder: "Enter your summary here...",
+        btnFinish: "Finish Activity",
         completionMsg1: "We hope this experience supports your health and happiness and helps you lead a more fulfilling life.",
         completionMsg2: "Thank you very much.",
         btnBackToTop: "Back to Top",
@@ -157,11 +234,11 @@
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-      const i18n = new I18n(gameTranslations);
+      window.i18n = new I18n(gameTranslations);
       const switcherContainer = document.getElementById('language-switcher-container');
-      const switcher = new LanguageSwitcher(i18n, switcherContainer);
+      const switcher = new LanguageSwitcher(window.i18n, switcherContainer);
       switcher.render();
-      i18n.updateDOM();
+      window.i18n.updateDOM();
 
       const container = document.getElementById('participant-input-container');
 
