@@ -1,7 +1,7 @@
 // js/submit.js - CORS回避版
 
 // GAS WebアプリのURL（デプロイ後に実際のURLに置き換える）
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxgpN0vhONQUhpc11FDZTHAJlWVhToemED2JK-yxg6rP40FfybpTMLlKHlSZz24iEzm/exec';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyU7h94-6tpQVx0hTjwpqxd3vKoHDUpYYdrk33yEedQ78lyaoN4QvoccYCrBFLF-uHJ/exec';
 
 /**
  * データをGoogle Apps Scriptに送信する共通関数 (CORS回避版)
