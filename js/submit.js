@@ -21,6 +21,7 @@ async function submitToGAS({ page, payload }) {
     anonymous_code: participant.anonymousCode,
     gender: participant.gender,
     age: participant.age,
+    language: window.i18n ? window.i18n.currentLang : (localStorage.getItem('appLanguage') || 'ja'),
     page: page,
     timestamp: new Date().toISOString(),
     payload: payload
