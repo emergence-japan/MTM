@@ -15,7 +15,7 @@
 - [x] Task: Apply translation logic to `post-survey.html` (Questions, categories, instructions). <!-- 995da9c -->
 - [x] Task: Conductor - User Manual Verification 'Multi-language Survey Flow' (Protocol in workflow.md) <!-- 4c2fe47 -->
 
-## Phase 4: Data Integration and Finalization
+## Phase 4: Data Integration and Finalization [checkpoint: 5697282]
 - [x] Task: Update data payload to include the user's selected language. <!-- f94ea5d -->
-- [ ] Task: Verify end-to-end data submission to GAS for both languages.
-- [ ] Task: Conductor - User Manual Verification 'Full End-to-End Multilingual Experience' (Protocol in workflow.md)
+- [x] Task: Verify end-to-end data submission to GAS for both languages. <!-- 6489839 -->
+- [x] Task: Conductor - User Manual Verification 'Full End-to-End Multilingual Experience' (Protocol in workflow.md) <!-- 5697282 -->

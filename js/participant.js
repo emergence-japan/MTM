@@ -66,6 +66,11 @@ function requireParticipantOrInput(container, onSuccess) {
   if (typeof renderAttributeInput === 'function') {
     renderAttributeInput(container);
     
+    // 翻訳を適用
+    if (window.i18n) {
+        window.i18n.updateDOM(container);
+    }
+    
     // イベントリスナー設定
     const saveBtn = container.querySelector('#saveAndProceed');
     if (saveBtn) {
