@@ -1,0 +1,1031 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運命のサイコロ</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/survey.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<body>
+
+  <div id="participant-input-container"></div>
+
+  <section id="post-survey" class="screen">
+    <div class="content-wrapper survey-wrapper">
+      <h2>事後アンケート</h2>
+      <p class="survey-intro">
+        ゲーム体験を完了していただきありがとうございます。ゲーム後のご自身の考えや感情を理解するため、以下の質問にご回答ください。
+      </p>
+      
+      <form id="post-survey-form" class="survey-form">
+        
+        <!-- Progress Indicator -->
+        <div class="survey-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="post-survey-progress"></div>
+          </div>
+          <p class="progress-text">
+            <span id="post-answered-count">0</span> / <span class="total-count">53</span> 問回答済み
+          </p>
+        </div>
+
+        <!-- Anonymous Code Input -->
+        <div class="survey-section" style="display: none;">
+          <div class="question-group">
+            <label for="anonymous-code" class="question-label">
+              匿名コード
+            </label>
+            <input
+              type="text"
+              id="anonymous-code"
+              name="anonymous_code"
+              class="text-input"
+              minlength="3"
+              maxlength="20"
+              placeholder="事前アンケートで使用したコードを入力してください"
+            />
+            <p class="input-hint">
+              事前アンケートで作成した匿名コードを同じくご入力ください。
+            </p>
+          </div>
+        </div>
+
+
+        <!-- Section 1: Life Satisfaction (Q1-Q8) -->
+        <div class="survey-section">
+          <p class="section-instruction">
+            <strong>パート1.</strong> 以下の質問は、あなたの人生全般の満足度を評価するものです。正しい答えも間違った答えもありません。現在のあなたの気持ちに従って正直にお答えください。
+          </p>
+
+          <div class="likert-questions">
+            <!-- Q1 -->
+            <div class="likert-question">
+              <label class="question-label">Q1: 私は自分の人生に満足している。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q1" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q2 -->
+            <div class="likert-question">
+              <label class="question-label">Q2: 私の人生の状況は素晴らしい。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q2" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q2" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q2" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q2" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q2" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q2" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q2" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q3 -->
+            <div class="likert-question">
+              <label class="question-label">Q3: 私は自分の人生がうまくいっていると思う。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q3" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q3" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q3" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q3" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q3" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q3" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q3" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q4 -->
+            <div class="likert-question">
+              <label class="question-label">Q4: 私は人生で欲しい重要なものを手に入れてきた。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q4" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q4" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q4" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q4" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q4" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q4" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q4" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q5 -->
+            <div class="likert-question">
+              <label class="question-label">Q5: 人生をやり直せるとしても、ほとんど何も変えないだろう。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q5" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q5" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q5" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q5" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q5" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q5" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q5" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q6 -->
+            <div class="likert-question">
+              <label class="question-label">Q6: 私の人生は価値に満ちている。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q6" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q6" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q6" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q6" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q6" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q6" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q6" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q7 -->
+            <div class="likert-question">
+              <label class="question-label">Q7: 私という存在は重要である。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q7" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q7" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q7" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q7" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q7" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q7" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q7" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+            <!-- Q8 -->
+            <div class="likert-question">
+              <label class="question-label">Q8: 毎日、人生には生きる価値があると感じている。</label>
+              <div class="likert-scale">
+                <span class="scale-label">全くそう思わない</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q8" value="1" /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q8" value="2" /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q8" value="3" /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q8" value="4" /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q8" value="5" /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q8" value="6" /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q8" value="7" /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">非常にそう思う</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Section 1 -->
+        
+        <!-- Section 2: Self-Efficacy (Q9-Q21) -->
+        <div class="survey-section">
+          <p class="section-instruction">
+            <strong>パート2.</strong> 以下の各項目について、困難な状況に直面したときに、その行動をどの程度自信を持って実行できるかを示してください。
+          </p>
+
+            <div class="likert-questions">
+                <!-- Q9 -->
+                <div class="likert-question">
+                  <label class="question-label">Q9: 悩ましい問題を小さな部分に分解する</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q9" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q10 -->
+                <div class="likert-question">
+                  <label class="question-label">Q10: 困難に思える問題でも解決するために粘り強く取り組む</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q10" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q10" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q10" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q10" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q10" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q10" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q10" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q11 -->
+                <div class="likert-question">
+                  <label class="question-label">Q11: 不快な思考を追い払う</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q11" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q11" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q11" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q11" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q11" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q11" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q11" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q12 -->
+                <div class="likert-question">
+                  <label class="question-label">Q12: 自分の将来について前向きに考える</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q12" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q12" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q12" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q12" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q12" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q12" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q12" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q13 -->
+                <div class="likert-question">
+                  <label class="question-label">Q13: 自分のネガティブな考えをコントロールする</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q13" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q13" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q13" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q13" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q13" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q13" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q13" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q14 -->
+                <div class="likert-question">
+                  <label class="question-label">Q14: 不快な思考に動揺するのをやめる</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q14" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q14" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q14" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q14" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q14" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q14" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q14" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q15 -->
+                <div class="likert-question">
+                  <label class="question-label">Q15: 悲しい気持ちにならないようにする</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q15" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q15" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q15" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q15" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q15" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q15" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q15" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q16 -->
+                <div class="likert-question">
+                  <label class="question-label">Q16: 友達を作る</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q16" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q16" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q16" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q16" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q16" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q16" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q16" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q17 -->
+                <div class="likert-question">
+                  <label class="question-label">Q17: 友人や家族から感情的なサポートを得る</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q17" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q17" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q17" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q17" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q17" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q17" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q17" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q18 -->
+                <div class="likert-question">
+                  <label class="question-label">Q18: 友人から必要な手助けを得る</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q18" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q18" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q18" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q18" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q18" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q18" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q18" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q19 -->
+                <div class="likert-question">
+                  <label class="question-label">Q19: 地域団体から感情的なサポートを得る</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q19" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q19" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q19" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q19" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q19" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q19" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q19" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q20 -->
+                <div class="likert-question">
+                  <label class="question-label">Q20: 必要なときに地域の人に助けを求める</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q20" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q20" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q20" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q20" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q20" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q20" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q20" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+                <!-- Q21 -->
+                <div class="likert-question">
+                  <label class="question-label">Q21: 家族以外から感情的なサポートを得る</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くできない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q21" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q21" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q21" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q21" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q21" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q21" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q21" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">確実にできる</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Section 2 -->
+
+        <!-- Section 3: Post-Traumatic Growth (Q22-Q36) -->
+        <div class="survey-section">
+          <p class="section-instruction">
+            <strong>パート3.</strong> 以下の各項目について、以前に選択した出来事の結果として、どの程度の変化を経験したかを示してください。<br>
+            <em>この出来事によって…</em>
+          </p>
+
+            <div class="likert-questions">
+                <!-- Q22 -->
+                <div class="likert-question">
+                  <label class="question-label">Q22: 他者への接し方が変化したと感じる。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q22" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q22" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q22" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q22" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q22" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q22" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q22" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q23 -->
+                <div class="likert-question">
+                  <label class="question-label">Q23: 自分で決断する自由を感じる程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q23" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q23" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q23" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q23" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q23" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q23" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q23" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q24 -->
+                <div class="likert-question">
+                  <label class="question-label">Q24: 人生について他者に教える価値のあるものを持っているという信念に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q24" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q24" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q24" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q24" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q24" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q24" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q24" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q25 -->
+                <div class="likert-question">
+                  <label class="question-label">Q25: 他人が自分に望むものになろうとせず、自分らしくいられる程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q25" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q25" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q25" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q25" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q25" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q25" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q25" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q26 -->
+                <div class="likert-question">
+                  <label class="question-label">Q26: 問題を最後までやり遂げ、諦めない程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q26" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q26" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q26" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q26" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q26" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q26" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q26" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q27 -->
+                <div class="likert-question">
+                  <label class="question-label">Q27: 人生の意味を見出す程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q27" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q27" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q27" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q27" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q27" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q27" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q27" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q28 -->
+                <div class="likert-question">
+                  <label class="question-label">Q28: 他者に手を差し伸べ、助ける程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q28" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q28" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q28" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q28" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q28" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q28" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q28" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q29 -->
+                <div class="likert-question">
+                  <label class="question-label">Q29: 自信のある人間である程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q29" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q29" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q29" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q29" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q29" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q29" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q29" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q30 -->
+                <div class="likert-question">
+                  <label class="question-label">Q30: 他者が私に話すときに、私が耳を傾ける程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q30" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q30" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q30" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q30" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q30" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q30" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q30" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q31 -->
+                <div class="likert-question">
+                  <label class="question-label">Q31: 新しい情報やアイデアに対して、私がオープンである程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q31" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q31" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q31" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q31" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q31" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q31" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q31" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q32 -->
+                <div class="likert-question">
+                  <label class="question-label">Q32: 他者と正直にコミュニケーションをとる程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q32" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q32" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q32" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q32" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q32" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q32" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q32" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q33 -->
+                <div class="likert-question">
+                  <label class="question-label">Q33: 世界に何らかの影響を与えたいという私の願望に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q33" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q33" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q33" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q33" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q33" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q33" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q33" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q34 -->
+                <div class="likert-question">
+                  <label class="question-label">Q34: 他人に助けを求めても良いという私の信念に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q34" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q34" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q34" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q34" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q34" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q34" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q34" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q35 -->
+                <div class="likert-question">
+                  <label class="question-label">Q35: 私が自分の個人的な権利を主張する程度に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q35" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q35" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q35" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q35" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q35" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q35" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q35" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+                <!-- Q36 -->
+                <div class="likert-question">
+                  <label class="question-label">Q36: 私のことを気にかけてくれる人がどれだけいるかという私の信念に変化があった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">非常に否定的な変化</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q36" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q36" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q36" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q36" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q36" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q36" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q36" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常に肯定的な変化</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Section 3 -->
+
+        <!-- Section 4: 学習エンゲージメント (Q37-Q52) -->
+        <div class="survey-section">
+          <p class="section-instruction">
+            <strong>パート4.</strong> 以下の各項目について、このゲームベースの教育プログラムが、学習意欲とエンゲージメントを維持するためにどの程度役立ったかを示してください。あなたの回答は、プログラムに関するあなたの個人的な経験を反映するものです。
+          </p>
+
+            <div class="likert-questions">
+                <!-- Q37 -->
+                <div class="likert-question">
+                  <label class="question-label">Q37: 学習コンテンツは私の興味を引いた。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q37" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q37" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q37" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q37" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q37" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q37" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q37" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q38 -->
+                <div class="likert-question">
+                  <label class="question-label">Q38: 学習教材は魅力的だった。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q38" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q38" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q38" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q38" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q38" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q38" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q38" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q39 -->
+                <div class="likert-question">
+                  <label class="question-label">Q39: コンテンツは刺激的だと感じた。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q39" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q39" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q39" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q39" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q39" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q39" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q39" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q40 -->
+                <div class="likert-question">
+                  <label class="question-label">Q40: コンテンツは興味深い方法で提示された。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q40" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q40" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q40" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q40" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q40" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q40" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q40" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q41 -->
+                <div class="likert-question">
+                  <label class="question-label">Q41: 学習教材は私の目標に関連している。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q41" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q41" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q41" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q41" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q41" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q41" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q41" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q42 -->
+                <div class="likert-question">
+                  <label class="question-label">Q42: コンテンツは私の個人的な興味に合っている。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q42" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q42" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q42" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q42" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q42" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q42" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q42" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q43 -->
+                <div class="likert-question">
+                  <label class="question-label">Q43: この教材を自分の経験と関連付けることができる。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q43" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q43" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q43" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q43" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q43" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q43" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q43" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q44 -->
+                <div class="likert-question">
+                  <label class="question-label">Q44: コンテンツは私の将来に役立つ。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q44" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q44" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q44" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q44" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q44" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q44" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q44" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q45 -->
+                <div class="likert-question">
+                  <label class="question-label">Q45: この学習で成功できると信じている。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q45" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q45" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q45" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q45" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q45" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q45" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q45" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q46 -->
+                <div class="likert-question">
+                  <label class="question-label">Q46: 教材は私にとって適切なレベルだ。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q46" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q46" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q46" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q46" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q46" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q46" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q46" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q47 -->
+                <div class="likert-question">
+                  <label class="question-label">Q47: このコンテンツを学ぶ能力に自信がある。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q47" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q47" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q47" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q47" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q47" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q47" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q47" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q48 -->
+                <div class="likert-question">
+                  <label class="question-label">Q48: 努力すれば成功できる。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q48" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q48" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q48" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q48" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q48" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q48" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q48" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q49 -->
+                <div class="likert-question">
+                  <label class="question-label">Q49: 学習の進捗に満足している。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q49" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q49" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q49" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q49" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q49" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q49" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q49" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q50 -->
+                <div class="likert-question">
+                  <label class="question-label">Q50: 学習体験は私の期待に応えている。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q50" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q50" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q50" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q50" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q50" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q50" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q50" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q51 -->
+                <div class="likert-question">
+                  <label class="question-label">Q51: 学習の成果に満足している。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q51" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q51" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q51" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q51" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q51" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q51" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q51" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+                <!-- Q52 -->
+                <div class="likert-question">
+                  <label class="question-label">Q52: 達成感を感じる。</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">全くそう思わない</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q52" value="1" /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q52" value="2" /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q52" value="3" /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q52" value="4" /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q52" value="5" /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q52" value="6" /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q52" value="7" /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">非常にそう思う</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Section 4 -->
+
+        <!-- Section 5: 自由回答 -->
+        <div class="survey-section">
+
+          <!-- Q53: Open-ended feedback -->
+          <div class="question-group">
+            <label for="q53" class="question-label">
+              Q53: ゲーム「運命のサイコロ」を体験した後のご意見・ご感想をお聞かせください。
+            </label>
+            <textarea
+              id="q53"
+              name="q53"
+              class="text-input"
+              rows="6"
+              placeholder="ゲーム体験についての考え、感情、内省を共有してください..."
+            ></textarea>
+          </div>
+        </div>
+        <!-- End Section 5 -->
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="post-survey-submit">
+            アンケートを完了する
+          </button>
+        </div>
+        
+      </form>
+    </div>
+  </section>
+  <script src="js/participant.js"></script>
+  <script src="js/input-form.js"></script>
+  <script src="js/submit.js"></script>
+  <script src="js/survey.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('participant-input-container');
+
+      requireParticipantOrInput(container, () => {
+        // 属性情報が確認できたらアンケートを表示
+        document.getElementById('post-survey').classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
