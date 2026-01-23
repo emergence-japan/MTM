@@ -39,26 +39,48 @@
         tagline: "コンテンツを選択してください。",
         preSurvey: "事前アンケートへ",
         game: "ゲーム開始",
-        postSurvey: "事後アンケートへ"
+        postSurvey: "事後アンケートへ",
+        formAnonymousCode: "匿名コード",
+        formAnonymousCodeHelp: "後のアンケートで個人を特定するために使用します。半角英数字で入力してください。",
+        formGender: "性別",
+        formPleaseSelect: "選択してください",
+        formMale: "男性",
+        formFemale: "女性",
+        formOther: "その他",
+        formPreferNotToAnswer: "回答しない",
+        formAge: "年齢",
+        formYearsOld: "歳",
+        formBtnSave: "入力内容を確定する"
       },
       en: {
         title: "The Dice of Destiny",
         tagline: "Please select content.",
         preSurvey: "Go to Pre-Survey",
         game: "Start Game",
-        postSurvey: "Go to Post-Survey"
+        postSurvey: "Go to Post-Survey",
+        formAnonymousCode: "Anonymous Code",
+        formAnonymousCodeHelp: "Used to identify you in later surveys. Please enter alphanumeric characters.",
+        formGender: "Gender",
+        formPleaseSelect: "Please select",
+        formMale: "Male",
+        formFemale: "Female",
+        formOther: "Other",
+        formPreferNotToAnswer: "Prefer not to answer",
+        formAge: "Age",
+        formYearsOld: "years old",
+        formBtnSave: "Confirm and proceed"
       }
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-      const i18n = new I18n(translations);
+      window.i18n = new I18n(translations);
       // Initialize language switcher
       const switcherContainer = document.getElementById('language-switcher-container');
-      const switcher = new LanguageSwitcher(i18n, switcherContainer);
+      const switcher = new LanguageSwitcher(window.i18n, switcherContainer);
       switcher.render();
       
       // Apply initial translations
-      i18n.updateDOM();
+      window.i18n.updateDOM();
     });
   </script>
 </body>

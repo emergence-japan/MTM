@@ -8,32 +8,32 @@ function renderAttributeInput(container, initialValues = null) {
 
   const html = `
       <div class="question-group">
-        <label for="anonymousCode" class="question-label">匿名コード</label>
-        <p class="question-help">後のアンケートで個人を特定するために使用します。半角英数字で入力してください。</p>
+        <label for="anonymousCode" class="question-label" data-i18n="formAnonymousCode">匿名コード</label>
+        <p class="question-help" data-i18n="formAnonymousCodeHelp">後のアンケートで個人を特定するために使用します。半角英数字で入力してください。</p>
         <input type="text" id="anonymousCode" name="anonymousCode" class="text-input" required>
       </div>
 
       <div class="question-group">
-        <label for="gender" class="question-label">性別</label>
+        <label for="gender" class="question-label" data-i18n="formGender">性別</label>
         <select id="gender" name="gender" class="text-input form-select" required>
-          <option value="">選択してください</option>
-          <option value="male">男性</option>
-          <option value="female">女性</option>
-          <option value="other">その他</option>
-          <option value="prefer_not_to_answer">回答しない</option>
+          <option value="" data-i18n="formPleaseSelect">選択してください</option>
+          <option value="male" data-i18n="formMale">男性</option>
+          <option value="female" data-i18n="formFemale">女性</option>
+          <option value="other" data-i18n="formOther">その他</option>
+          <option value="prefer_not_to_answer" data-i18n="formPreferNotToAnswer">回答しない</option>
         </select>
       </div>
 
       <div class="question-group">
-        <label for="age" class="question-label">年齢</label>
+        <label for="age" class="question-label" data-i18n="formAge">年齢</label>
         <div class="age-input-wrapper">
             <input type="number" id="age" name="age" min="6" max="120" class="number-input" required>
-            <span class="input-suffix">歳</span>
+            <span class="input-suffix" data-i18n="formYearsOld">歳</span>
         </div>
       </div>
 
       <div class="form-actions" style="border-top: none; padding-top: 0; margin-top: var(--spacing-md);">
-        <button id="saveAndProceed" class="btn-primary">入力内容を確定する</button>
+        <button id="saveAndProceed" class="btn-primary" data-i18n="formBtnSave">入力内容を確定する</button>
       </div>
   `;
 
