@@ -13,19 +13,53 @@
 </head>
 <body id="welcome">
 
+  <div id="language-switcher-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000;"></div>
+
   <div class="screen active">
     <div class="content-wrapper" style="max-width: 650px;">
-      <h1 class="title">The Dice of Destiny</h1>
-      <p class="tagline" style="margin-bottom: var(--spacing-md);">コンテンツを選択してください。</p>
+      <h1 class="title" data-i18n="title">The Dice of Destiny</h1>
+      <p class="tagline" style="margin-bottom: var(--spacing-md);" data-i18n="tagline">コンテンツを選択してください。</p>
 
       <div class="navigation-buttons" style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem;">
-          <button id="goToPreSurvey" class="btn-secondary" style="width: 100%;" onclick="location.href='pre-survey.html'">事前アンケートへ</button>
-          <button id="goToGame" class="btn-secondary" style="width: 100%;" onclick="location.href='game.html'">ゲーム開始</button>
-          <button id="goToPostSurvey" class="btn-secondary" style="width: 100%;" onclick="location.href='post-survey.html'">事後アンケートへ</button>
+          <button id="goToPreSurvey" class="btn-secondary" style="width: 100%;" onclick="location.href='pre-survey.html'" data-i18n="preSurvey">事前アンケートへ</button>
+          <button id="goToGame" class="btn-secondary" style="width: 100%;" onclick="location.href='game.html'" data-i18n="game">ゲーム開始</button>
+          <button id="goToPostSurvey" class="btn-secondary" style="width: 100%;" onclick="location.href='post-survey.html'" data-i18n="postSurvey">事後アンケートへ</button>
       </div>
 
   </div>
 </div>
 
+  <script src="js/i18n.js"></script>
+  <script src="js/language-switcher.js"></script>
+  <script>
+    // Translations
+    const translations = {
+      ja: {
+        title: "The Dice of Destiny",
+        tagline: "コンテンツを選択してください。",
+        preSurvey: "事前アンケートへ",
+        game: "ゲーム開始",
+        postSurvey: "事後アンケートへ"
+      },
+      en: {
+        title: "The Dice of Destiny",
+        tagline: "Please select content.",
+        preSurvey: "Go to Pre-Survey",
+        game: "Start Game",
+        postSurvey: "Go to Post-Survey"
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const i18n = new I18n(translations);
+      // Initialize language switcher
+      const switcherContainer = document.getElementById('language-switcher-container');
+      const switcher = new LanguageSwitcher(i18n, switcherContainer);
+      switcher.render();
+      
+      // Apply initial translations
+      i18n.updateDOM();
+    });
+  </script>
 </body>
 </html>

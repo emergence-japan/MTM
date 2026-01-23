@@ -13,6 +13,8 @@
 </head>
 <body>
 
+  <div id="language-switcher-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000;"></div>
+
   <div id="participant-input-container"></div>
 
   <section id="pre-survey" class="screen">
@@ -702,8 +704,22 @@
   <script src="js/input-form.js"></script>
   <script src="js/submit.js"></script>
   <script src="js/survey.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/language-switcher.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Translations will be loaded later
+      const translations = { ja: {}, en: {} }; 
+      const i18n = new I18n(translations);
+      
+      const switcherContainer = document.getElementById('language-switcher-container');
+      if (switcherContainer) {
+          const switcher = new LanguageSwitcher(i18n, switcherContainer);
+          switcher.render();
+      }
+      
+      i18n.updateDOM();
+
       const container = document.getElementById('participant-input-container');
       
       requireParticipantOrInput(container, () => {
