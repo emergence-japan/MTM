@@ -17,7 +17,13 @@
 
   <div id="language-switcher-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000;"></div>
 
-  <div id="participant-input-container"></div>
+  <!-- Participant Input Screen -->
+  <section id="participant-screen" class="screen">
+    <div class="content-wrapper">
+      <h2 data-i18n="participantInfoHeader">参加者情報の入力</h2>
+      <div id="participant-input-container"></div>
+    </div>
+  </section>
 
   <!-- Welcome Screen -->
   <section id="welcome" class="screen">
@@ -59,10 +65,10 @@
     </div>
   </section>
 
-  <!-- Step 1 & 2: Listing and Ranking -->
+  <!-- Step 1: Listing -->
   <section id="step1" class="screen">
     <div class="content-wrapper survey-wrapper">
-        <h2 data-i18n="step1Title">ステップ1 & 2</h2>
+        <h2 data-i18n="step1Title">ステップ1</h2>
         <p class="section-instruction" data-i18n="step1Instruction">あなたにとって大切なもの、人、出来事を5～6個ほど挙げてください。</p>
         
         <div id="item-list-container" class="item-list-container">
@@ -90,17 +96,24 @@
             <p id="item-count-status" class="validation-status invalid" data-i18n="validationMinItems">最低5つ入力してください</p>
         </div>
 
-        <div id="ranking-container" style="display: none; margin-top: 2rem;">
-            <h3 data-i18n="step2Title">重要度順に並び替える</h3>
-            <p class="input-hint" data-i18n="step2Instruction">1 = 最も重要</p>
-            <div id="ranked-items-list" class="ranked-items-list">
-                <!-- Ranked items will be injected here -->
-            </div>
+        <div class="form-actions">
+            <button id="btn-to-step2" class="btn-primary" onclick="navigateTo('step2')" disabled data-i18n="btnToStep2">次へ (順位付け)</button>
+        </div>
+    </div>
+  </section>
+
+  <!-- Step 2: Ranking -->
+  <section id="step2" class="screen">
+    <div class="content-wrapper survey-wrapper">
+        <h2 data-i18n="step2Title">ステップ2 - 重要度の順位付け</h2>
+        <p class="section-instruction" data-i18n="step2Instruction">最も重要なものから順に番号を振ってください (1 = 最も重要)</p>
+        
+        <div id="ranked-items-list" class="ranked-items-list" style="margin-top: 2rem;">
+            <!-- Ranked items will be injected here -->
         </div>
 
         <div class="form-actions">
-            <button id="btn-to-ranking" class="btn-primary" onclick="showRanking()" disabled data-i18n="btnOrganize">次へ (整理)</button>
-            <button id="btn-to-step3" class="btn-primary" onclick="navigateTo('step3')" style="display: none;" data-i18n="btnNext">次へ (深く考える)</button>
+            <button class="btn-primary" onclick="navigateTo('step3')" data-i18n="btnNext">次へ (深く考える)</button>
         </div>
     </div>
   </section>
@@ -176,12 +189,12 @@
         remark3: "あなたの回答は秘密であり、採点・評価されることはありません。",
         remark4: "目的は自己理解と自覚であり、パフォーマンスではありません。",
         btnUnderstand: "理解して体験を開始する",
-        step1Title: "ステップ1 & 2 - 整理",
+        step1Title: "ステップ1 - リストアップ",
         step1Instruction: "あなたにとって大切なもの、人、出来事を5～6個ほど挙げてください。",
         itemPlaceholder: "大切なものを入力してください",
         validationMinItems: "最低5つ入力してください",
-        btnOrganize: "次へ (整理)",
-        step2Title: "重要度順に並び替える",
+        btnToStep2: "次へ (順位付け)",
+        step2Title: "ステップ2 - 重要度の順位付け",
         step2Instruction: "最も重要なものから順に番号を振ってください (1 = 最も重要)",
         btnNext: "次へ",
         step3Title: "ステップ3 - 深く考える",
@@ -206,7 +219,8 @@
         formPreferNotToAnswer: "回答しない",
         formAge: "年齢",
         formYearsOld: "歳",
-        formBtnSave: "入力内容を確定する"
+        formBtnSave: "入力内容を確定する",
+        participantInfoHeader: "参加者情報の入力"
       },
       en: {
         gameTitle: "What Matters to Me",
@@ -221,12 +235,12 @@
         remark3: "Your answers are private and will not be graded or evaluated.",
         remark4: "The goal is self-understanding and awareness, not performance.",
         btnUnderstand: "I understand, start activity",
-        step1Title: "Step 1 & 2 - Organizing",
+        step1Title: "Step 1 - Listing",
         step1Instruction: "List about 5–6 things, people, or events that are important to you.",
         itemPlaceholder: "Enter something important",
         validationMinItems: "Please enter at least 5 items",
-        btnOrganize: "Next (Organize)",
-        step2Title: "Organize by Importance",
+        btnToStep2: "Next (Ranking)",
+        step2Title: "Step 2 - Organize by Importance",
         step2Instruction: "Arrange these items from most important to least important (1 = most important).",
         btnNext: "Next",
         step3Title: "Step 3 - Deep Thinking",
@@ -251,7 +265,8 @@
         formPreferNotToAnswer: "Prefer not to answer",
         formAge: "Age",
         formYearsOld: "years old",
-        formBtnSave: "Confirm and proceed"
+        formBtnSave: "Confirm and proceed",
+        participantInfoHeader: "Participant Information"
       }
     };
 
@@ -263,8 +278,22 @@
       window.i18n.updateDOM();
 
       const container = document.getElementById('participant-input-container');
+      const participantScreen = document.getElementById('participant-screen');
+
+      // 参加者情報がない場合は入力画面を表示
+      if (!getParticipant()) {
+        participantScreen.classList.add('active');
+      }
 
       requireParticipantOrInput(container, () => {
+        // 情報が確定したら入力画面を隠す
+        participantScreen.classList.remove('active');
+        
+        // アプリの初期化
+        if (typeof initializeApp === 'function') {
+          initializeApp();
+        }
+
         const participant = getParticipant();
         
         // ウェルカムメッセージの表示
@@ -273,9 +302,6 @@
           const msg = i18n.t('welcomeMsg').replace('{name}', `<strong style="color: var(--color-primary);">${participant.anonymousCode}</strong>`);
           welcomeMessageEl.innerHTML = `<p class="subtitle" style="color: white;">${msg}</p>`;
         }
-        
-        // 最初の画面を表示
-        document.getElementById('welcome').classList.add('active');
       });
     });
   </script>

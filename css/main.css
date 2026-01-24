@@ -195,6 +195,81 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1rem auto;
 }
 
+/* Ranking Cards */
+.sortable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.sortable-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+}
+
+.sortable-item:active {
+  cursor: grabbing;
+}
+
+.sortable-item.dragging {
+  opacity: 0.5;
+  background: var(--color-primary);
+  border-color: white;
+  transform: scale(0.98);
+}
+
+.sortable-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-primary);
+}
+
+.rank-badge {
+  background: var(--color-primary);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.item-content {
+  font-size: 1.1rem;
+  color: white;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.drag-handle {
+  color: rgba(255, 255, 255, 0.3);
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Top items emphasis */
+.sortable-item[data-rank="1"],
+.sortable-item[data-rank="2"] {
+  border-left: 5px solid gold;
+  background: rgba(251, 191, 36, 0.1);
+}
+
 /* Completion Screen */
 .completion-content {
   text-align: center;

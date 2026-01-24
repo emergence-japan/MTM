@@ -20,9 +20,10 @@ if (typeof window.surveyData === 'undefined') {
 }
 
 // Initialize app
-document.addEventListener('DOMContentLoaded', () => {
-  initializeApp();
-});
+// Removed automatic initialization on DOMContentLoaded to allow for participant check first
+// document.addEventListener('DOMContentLoaded', () => {
+//   initializeApp();
+// });
 
 function initializeApp() {
   // Show welcome screen
@@ -94,6 +95,9 @@ function onSectionShow(sectionId) {
     switch(sectionId) {
         case 'step1':
             initializeStep1();
+            break;
+        case 'step2':
+            initializeStep2();
             break;
         case 'step3':
             initializeStep3();
@@ -180,7 +184,7 @@ function validateStep1() {
 
     const statusEl = document.getElementById('item-count-status');
 
-    const btn = document.getElementById('btn-to-ranking');
+    const btn = document.getElementById('btn-to-step2');
 
     
 
@@ -212,140 +216,120 @@ function validateStep1() {
 
 
 
-function showRanking() {
-
+function initializeStep2() {
     const inputs = document.querySelectorAll('.item-input');
-
     const items = Array.from(inputs)
-
         .map(input => input.value.trim())
-
         .filter(val => val !== '');
-
     
-
     const container = document.getElementById('ranked-items-list');
-
+    if (!container) return;
+    
     container.innerHTML = '';
-
+    container.className = 'sortable-list';
     
-
     items.forEach((item, index) => {
-
         const itemEl = document.createElement('div');
-
-        itemEl.className = 'ranked-item-row';
-
-        itemEl.style.display = 'flex';
-
-        itemEl.style.alignItems = 'center';
-
-        itemEl.style.gap = '1rem';
-
-        itemEl.style.marginBottom = '0.5rem';
-
+        itemEl.className = 'sortable-item';
+        itemEl.draggable = true;
+        itemEl.dataset.index = index;
         
-
         itemEl.innerHTML = `
-
-            <input type="number" class="number-input rank-input" min="1" max="${items.length}" value="${index + 1}" style="width: 60px;">
-
-            <span class="item-text">${item}</span>
-
+            <div class="rank-badge">${index + 1}</div>
+            <div class="item-content">${item}</div>
+            <div class="drag-handle">☰</div>
         `;
-
+        
+        // Drag events
+        itemEl.addEventListener('dragstart', handleDragStart);
+        itemEl.addEventListener('dragend', handleDragEnd);
+        
         container.appendChild(itemEl);
-
     });
-
     
-
-    document.getElementById('ranking-container').style.display = 'block';
-
-    document.getElementById('btn-to-ranking').style.display = 'none';
-
-    document.getElementById('btn-to-step3').style.display = 'inline-block';
-
-    
-
-    // Smooth scroll to ranking
-
-    document.getElementById('ranking-container').scrollIntoView({ behavior: 'smooth' });
-
+    container.addEventListener('dragover', handleDragOver);
 }
 
+let draggedItem = null;
 
+function handleDragStart(e) {
+    draggedItem = this;
+    this.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+}
+
+function handleDragEnd() {
+    this.classList.remove('dragging');
+    draggedItem = null;
+    updateRanks();
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    const container = document.getElementById('ranked-items-list');
+    const afterElement = getDragAfterElement(container, e.clientY);
+    if (afterElement == null) {
+        container.appendChild(draggedItem);
+    } else {
+        container.insertBefore(draggedItem, afterElement);
+    }
+    updateRanks();
+}
+
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.sortable-item:not(.dragging)')];
+    
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+function updateRanks() {
+    const container = document.getElementById('ranked-items-list');
+    const items = container.querySelectorAll('.sortable-item');
+    items.forEach((item, index) => {
+        item.querySelector('.rank-badge').textContent = index + 1;
+        item.dataset.rank = index + 1;
+    });
+}
 
 function initializeStep3() {
-
-    // Get ranked items
-
-    const rows = document.querySelectorAll('.ranked-item-row');
-
-    const rankedData = Array.from(rows).map(row => {
-
-        return {
-
-            text: row.querySelector('.item-text').textContent,
-
-            rank: parseInt(row.querySelector('.rank-input').value, 10)
-
-        };
-
-    }).sort((a, b) => a.rank - b.rank);
-
+    // 画面上の現在の順番を取得
+    const items = document.querySelectorAll('.sortable-item');
+    const rankedItems = Array.from(items).map(item => item.querySelector('.item-content').textContent);
     
-
     // Save ranked items to state
-
-    window.surveyData.gamePlay.rankedItems = rankedData.map(d => d.text);
-
+    window.surveyData.gamePlay.rankedItems = rankedItems;
     
-
     // Select top 2 items
-
-    const topItems = rankedData.slice(0, 2);
-
+    const topItems = rankedItems.slice(0, 2);
     
-
     const container = document.getElementById('deep-thinking-container');
-
+    if (!container) return;
     container.innerHTML = '';
-
     
-
-    topItems.forEach(item => {
-
+    topItems.forEach(itemText => {
         const box = document.createElement('div');
-
         box.className = 'reflection-box survey-section';
-
         box.innerHTML = `
-
-            <h3>${item.text}</h3>
-
+            <h3>${itemText}</h3>
             <div class="question-group">
-
                 <label class="question-label">${window.i18n.t('whyImportant')}</label>
-
-                <textarea class="text-input why-textarea" data-item="${item.text}" rows="4" style="width: 100%; max-width: 100%;"></textarea>
-
+                <textarea class="text-input why-textarea" data-item="${itemText}" rows="4" style="width: 100%; max-width: 100%;"></textarea>
             </div>
-
             <div class="question-group">
-
                 <label class="question-label">${window.i18n.t('howInfluence')}</label>
-
-                <textarea class="text-input how-textarea" data-item="${item.text}" rows="4" style="width: 100%; max-width: 100%;"></textarea>
-
+                <textarea class="text-input how-textarea" data-item="${itemText}" rows="4" style="width: 100%; max-width: 100%;"></textarea>
             </div>
-
         `;
-
         container.appendChild(box);
-
     });
-
 }
 
 
