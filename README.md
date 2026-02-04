@@ -1,6 +1,6 @@
-# Dice of Destiny - Phase 1
+# What Matters to Me - Phase 1
 
-This is the first phase of the Dice of Destiny web application. It includes the basic HTML structure, CSS styling, and JavaScript navigation.
+This is the first phase of the What Matters to Me web application. It includes the basic HTML structure, CSS styling, and JavaScript navigation.
 
 ## How to run
 
