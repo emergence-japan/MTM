@@ -54,11 +54,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Typography */
 .title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1rem, 8vw, 3.2rem);
   text-align: center;
   margin-bottom: 1rem;
   color: var(--color-text-light);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
 }
 
 .subtitle {
@@ -926,14 +929,13 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-#welcome, #important-notes, #opening-story-1, #opening-story-2, #opening-story-3 {
+#important-notes, #opening-story-1, #opening-story-2, #opening-story-3 {
   background-image: url('../assets/BG01.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
-#welcome .screen, 
 #important-notes .screen, 
 #opening-story-1 .screen, 
 #opening-story-2 .screen, 
